@@ -27,17 +27,14 @@ namespace Examples.Observer
 
         private void OnEnable()
         {
-            // notify when target is damaged
-            _health.OnDamaged += DisplayHitText;
-            _health.OnKilled += DisplayKilledText;
+            
+            
         }
         
 
         public void StopObservingHealth()
         {
-            // no longer watch target
-            _health.OnDamaged -= DisplayHitText;
-            _health.OnKilled -= DisplayKilledText;
+            
         }
 
         void DisplayHitText(int damaged)

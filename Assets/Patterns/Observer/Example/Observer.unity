@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 1096506497}
   - component: {fileID: 1096506501}
   m_Layer: 5
-  m_Name: HUD_cnv
+  m_Name: HUD_canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 1221629887}
   - component: {fileID: 1221629886}
   m_Layer: 5
-  m_Name: TextPopup_txt
+  m_Name: TextPopup_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

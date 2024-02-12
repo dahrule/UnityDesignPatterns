@@ -28,14 +28,12 @@ namespace Examples.Observer
 
         private void OnEnable()
         {
-            _health.OnDamaged += PlayDamageSound;
-            _health.OnKilled += PlayKillSound;
+            
         }
 
         private void OnDisable()
         {
-            _health.OnDamaged -= PlayDamageSound;
-            _health.OnKilled -= PlayKillSound;
+            
         }
 
         void PlayDamageSound(int damage)

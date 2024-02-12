@@ -13,12 +13,11 @@ namespace Examples.Observer
 {
     public class Health : MonoBehaviour
     {
-        public event Action<int> OnDamaged;
-        public event Action<int> OnHealed;
-        public event Action OnKilled;
+        //Declare an event OnDamaged that send an int
+        //Declare an event OnKilled
 
         [SerializeField] int _startingHealth = 100;
-        public int StartingHealth //This is a Property
+        public int StartingHealth 
         {
             get { return _startingHealth; }
         }
@@ -50,27 +49,21 @@ namespace Examples.Observer
             CurrentHealth = _startingHealth;
         }
 
-        public void Heal(int amount)
-        {
-            CurrentHealth += amount;
-            OnHealed?.Invoke(amount);
-        }
+      
 
         public void TakeDamage(int amount)
         {
-            CurrentHealth -= amount;
-            OnDamaged?.Invoke(amount);
-
-            if(CurrentHealth <= 0)
-            {
-                Kill();
-            }
+            //Reduce health
+            //Invoke OnDamaged event
+            
+            //if health is zero, call Kill function
         }
 
         public void Kill()
         {
-            OnKilled?.Invoke();
-            gameObject.SetActive(false);
+            //Invoke OnKilled Event
+            //Deactivate this gameobject
+         
         }
     }
 }
