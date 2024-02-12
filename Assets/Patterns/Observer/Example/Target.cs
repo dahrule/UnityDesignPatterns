@@ -28,12 +28,12 @@ namespace Examples.Observer
         private void OnEnable()
         {
             // subscribe to get notified when this health takes damage!
-            Health.Damaged += OnTakeDamage;
+            Health.OnDamaged += OnTakeDamage;
         }
 
         private void OnDisable()
         {
-            Health.Damaged -= OnTakeDamage;
+            Health.OnDamaged -= OnTakeDamage;
         }
 
         void OnTakeDamage(int damage)

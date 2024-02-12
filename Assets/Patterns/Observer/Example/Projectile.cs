@@ -15,16 +15,16 @@ namespace Examples.Observer
         [SerializeField] float _travelSpeed = 5f;
         [SerializeField] int _damage = 20;
 
-        Rigidbody _rb = null;
+        Rigidbody _rigidbody = null;
 
         private void Awake()
         {
-            _rb = GetComponent<Rigidbody>();
+            _rigidbody = GetComponent<Rigidbody>();
         }
 
         private void FixedUpdate()
         {
-            Travel(_rb);
+            Travel(_rigidbody);
         }
 
         protected void Travel(Rigidbody rb)
@@ -36,9 +36,9 @@ namespace Examples.Observer
         private void OnCollisionEnter(Collision other)
         {
             Health health = other.gameObject.GetComponent<Health>();
-            health?.TakeDamage(_damage);
-            //TODO consider Object Pooling here!
-            Destroy(gameObject);
+            health.TakeDamage(_damage); 
+            
+            Destroy(gameObject); //TODO consider Object Pooling here
         }
     }
 }

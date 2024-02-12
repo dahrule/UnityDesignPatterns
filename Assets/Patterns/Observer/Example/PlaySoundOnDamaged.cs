@@ -28,22 +28,21 @@ namespace Examples.Observer
 
         private void OnEnable()
         {
-            _health.Damaged += OnDamaged;
-            _health.Killed += OnKilled;
+            _health.OnDamaged += OnDamaged;
+            _health.OnKilled += OnKilled;
         }
 
         private void OnDisable()
         {
-            _health.Damaged -= OnDamaged;
-            _health.Killed -= OnKilled;
+            _health.OnDamaged -= OnDamaged;
+            _health.OnKilled -= OnKilled;
         }
 
         void OnDamaged(int damage)
         {
             if(_damagedSound != null && _locationToPlay != null)
             {
-                AudioSource.PlayClipAtPoint
-                    (_damagedSound, _locationToPlay.position);
+                AudioSource.PlayClipAtPoint(_damagedSound, _locationToPlay.position);
             }
         }
 
@@ -51,8 +50,7 @@ namespace Examples.Observer
         {
             if (_damagedSound != null && _locationToPlay != null)
             {
-                AudioSource.PlayClipAtPoint
-                    (_killedSound, _locationToPlay.position);
+                AudioSource.PlayClipAtPoint(_killedSound, _locationToPlay.position);
             }
         }
     }

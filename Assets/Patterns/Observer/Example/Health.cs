@@ -13,20 +13,27 @@ namespace Examples.Observer
 {
     public class Health : MonoBehaviour
     {
-        public event Action<int> Damaged = delegate { };
-        public event Action<int> Healed = delegate { };
-        public event Action Killed = delegate { };
+        public event Action<int> OnDamaged;
+        public event Action<int> OnHealed;
+        public event Action OnKilled;
 
         [SerializeField] int _startingHealth = 100;
-        public int StartingHealth => _startingHealth;
+        public int StartingHealth //This is a Property
+        {
+            get { return _startingHealth; }
+        }
 
         [SerializeField] int _maxHealth = 100;
-        public int MaxHealth => _maxHealth;
+        public int MaxHealth
+        {
+            get { return _maxHealth; }
+        }
+       
 
         int _currentHealth;
         public int CurrentHealth
         {
-            get => _currentHealth;
+            get { return _currentHealth; }
             set
             {
                 // ensure we can't go above our max health
@@ -46,13 +53,13 @@ namespace Examples.Observer
         public void Heal(int amount)
         {
             CurrentHealth += amount;
-            Healed.Invoke(amount);
+            OnHealed?.Invoke(amount);
         }
 
         public void TakeDamage(int amount)
         {
             CurrentHealth -= amount;
-            Damaged.Invoke(amount);
+            OnDamaged?.Invoke(amount);
 
             if(CurrentHealth <= 0)
             {
@@ -62,7 +69,7 @@ namespace Examples.Observer
 
         public void Kill()
         {
-            Killed.Invoke();
+            OnKilled?.Invoke();
             gameObject.SetActive(false);
         }
     }

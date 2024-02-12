@@ -22,29 +22,22 @@ namespace Examples.Observer
         [SerializeField] string _killText = "KILL";
         [SerializeField] float _textPopupDuration = 1;
 
-        Health _observedHealth = null;
         Coroutine _popupRoutine = null;
 
-        private void Awake()
-        {
-            StartObservingHealth(_healthToObserve);
-        }
 
-        public void StartObservingHealth(Health newHealthToObserver)
+        private void OnEnable()
         {
-            _observedHealth = newHealthToObserver;
             // notify when target is damaged
-            _observedHealth.Damaged += OnObservedHealthDamaged;
-            _observedHealth.Killed += OnObservedHealthKilled;
+            _healthToObserve.OnDamaged += OnObservedHealthDamaged;
+            _healthToObserve.OnKilled += OnObservedHealthKilled;
         }
+        
 
         public void StopObservingHealth()
         {
             // no longer watch target
-            _observedHealth.Damaged -= OnObservedHealthDamaged;
-            _observedHealth.Killed -= OnObservedHealthKilled;
-
-            _observedHealth = null;
+            _healthToObserve.OnDamaged -= OnObservedHealthDamaged;
+            _healthToObserve.OnKilled -= OnObservedHealthKilled;
         }
 
         void OnObservedHealthDamaged(int damaged)

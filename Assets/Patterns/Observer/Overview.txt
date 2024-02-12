@@ -5,7 +5,7 @@ by calling the designated method
 Simplified - "Run method in response to this specific event"
 
 Why do we want to use it?
-We want to react to things ONLY when they happen, instead of checking every loop to see 'if its happened yet'
+We want to react to things ONLY when they happen, instead of checking every loop to see 'if its happened yet'. 
 
 Common Examples
 User Interface, any time a specific event happens that other things should know about, 'damaged', 'leveled up', etc.

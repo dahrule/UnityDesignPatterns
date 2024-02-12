@@ -15,7 +15,7 @@ namespace Examples.Observer
 
         private void Update()
         {
-            // fire zeh missiles
+            // fire  missiles
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 FireProjectile();
@@ -24,8 +24,7 @@ namespace Examples.Observer
 
         void FireProjectile()
         {
-            Projectile newProjectile = Instantiate(_projectile, 
-                _projectileSpawnPoint.position, transform.rotation);
+            Projectile newProjectile = Instantiate(_projectile, _projectileSpawnPoint.position, transform.rotation);
         }
     }
 }
