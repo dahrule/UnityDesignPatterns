@@ -28,17 +28,17 @@ namespace Examples.Observer
 
         private void OnEnable()
         {
-            _health.OnDamaged += OnDamaged;
-            _health.OnKilled += OnKilled;
+            _health.OnDamaged += PlayDamageSound;
+            _health.OnKilled += PlayKillSound;
         }
 
         private void OnDisable()
         {
-            _health.OnDamaged -= OnDamaged;
-            _health.OnKilled -= OnKilled;
+            _health.OnDamaged -= PlayDamageSound;
+            _health.OnKilled -= PlayKillSound;
         }
 
-        void OnDamaged(int damage)
+        void PlayDamageSound(int damage)
         {
             if(_damagedSound != null && _locationToPlay != null)
             {
@@ -46,7 +46,7 @@ namespace Examples.Observer
             }
         }
 
-        void OnKilled()
+        void PlayKillSound()
         {
             if (_damagedSound != null && _locationToPlay != null)
             {

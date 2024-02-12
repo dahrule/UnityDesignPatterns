@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c873a9a8ad462b4f83970d40963789c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthToObserve: {fileID: 775590318}
+  _health: {fileID: 775590318}
   _textPopupUI: {fileID: 1221629887}
   _hitText: Hit!
   _killText: KILL

@@ -15,7 +15,7 @@ namespace Examples.Observer
 {
     public class HitTextPopup : MonoBehaviour
     {
-        [SerializeField] Health _healthToObserve = null;
+        [SerializeField] Health _health = null;
         [SerializeField] Text _textPopupUI = null;
 
         [SerializeField] string _hitText = "Hit!";
@@ -28,19 +28,19 @@ namespace Examples.Observer
         private void OnEnable()
         {
             // notify when target is damaged
-            _healthToObserve.OnDamaged += OnObservedHealthDamaged;
-            _healthToObserve.OnKilled += OnObservedHealthKilled;
+            _health.OnDamaged += DisplayHitText;
+            _health.OnKilled += DisplayKilledText;
         }
         
 
         public void StopObservingHealth()
         {
             // no longer watch target
-            _healthToObserve.OnDamaged -= OnObservedHealthDamaged;
-            _healthToObserve.OnKilled -= OnObservedHealthKilled;
+            _health.OnDamaged -= DisplayHitText;
+            _health.OnKilled -= DisplayKilledText;
         }
 
-        void OnObservedHealthDamaged(int damaged)
+        void DisplayHitText(int damaged)
         {
             string hitText = _hitText + " " + damaged.ToString();
 
@@ -56,7 +56,7 @@ namespace Examples.Observer
             _textPopupUI.text = string.Empty;
         }
 
-        void OnObservedHealthKilled()
+        void DisplayKilledText()
         {
             if (_popupRoutine != null)
                 StopCoroutine(_popupRoutine);

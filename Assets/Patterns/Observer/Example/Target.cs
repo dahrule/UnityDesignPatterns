@@ -28,15 +28,15 @@ namespace Examples.Observer
         private void OnEnable()
         {
             // subscribe to get notified when this health takes damage!
-            Health.OnDamaged += OnTakeDamage;
+            Health.OnDamaged += DisplayDamage;
         }
 
         private void OnDisable()
         {
-            Health.OnDamaged -= OnTakeDamage;
+            Health.OnDamaged -= DisplayDamage;
         }
 
-        void OnTakeDamage(int damage)
+        void DisplayDamage(int damage)
         {
             // on damaged, display the new health
             _healthSlider.value = Health.CurrentHealth;
